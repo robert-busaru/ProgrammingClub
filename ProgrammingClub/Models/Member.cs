@@ -1,4 +1,4 @@
-﻿namespace ProgrammingClub.Controllers.NewFolder
+﻿namespace ProgrammingClub.Models
 {
     public class Member
     {

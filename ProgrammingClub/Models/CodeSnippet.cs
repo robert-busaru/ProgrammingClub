@@ -1,4 +1,4 @@
-﻿namespace ProgrammingClub.Controllers.Models
+﻿namespace ProgrammingClub.Models
 {
     public class CodeSnippet
     {
@@ -8,7 +8,7 @@
         public int IdMember { get; set; }
         public DateTime Revision {  get; set; }
         public int IdSnippetPreviousVersion { get; set; }
-        public Boolean IsPublished { get; set; }
+        public bool IsPublished { get; set; }
 
     }
 }

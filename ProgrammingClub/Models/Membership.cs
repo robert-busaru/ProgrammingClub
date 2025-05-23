@@ -1,4 +1,4 @@
-﻿namespace ProgrammingClub.Controllers.Models
+﻿namespace ProgrammingClub.Models
 {
     public class Membership
     {
