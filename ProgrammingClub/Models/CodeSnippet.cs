@@ -1,7 +1,10 @@
-﻿namespace ProgrammingClub.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProgrammingClub.Models
 {
     public class CodeSnippet
     {
+        [Key]
         public uint IdCodeSnippet { get; set; }
         public string Title { get; set; }
         public string ContentCode {  get; set; }

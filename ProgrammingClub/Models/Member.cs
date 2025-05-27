@@ -1,7 +1,10 @@
-﻿namespace ProgrammingClub.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProgrammingClub.Models
 {
     public class Member
     {
+        [Key]
         public Guid IdMember { get; set; } 
         public string Name { get; set; }
         public string Title { get; set; }

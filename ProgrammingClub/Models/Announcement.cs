@@ -1,7 +1,10 @@
-﻿namespace ProgrammingClub.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProgrammingClub.Models
 {
     public class Announcement
     {
+        [Key]
         public Guid IdAnnouncement {  get; set; }
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
