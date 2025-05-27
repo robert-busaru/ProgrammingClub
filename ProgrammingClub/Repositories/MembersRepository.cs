@@ -1,19 +1,26 @@
-﻿using ProgrammingClub.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProgrammingClub.DatabaseDataContext;
+using ProgrammingClub.Models;
 
 namespace ProgrammingClub.Repositories
 {
     public class MembersRepository : IMembersRepository
     {
+        private readonly ProgrammingClubDataContext _context;
 
-        Task<IEnumerable<Member>> IMembersRepository.GetAllMembersAsync()
+        public MembersRepository(ProgrammingClubDataContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        Task<Member> IMembersRepository.GetMemberByIdAsync(int id)
+        public async Task<IEnumerable<Member>> GetAllMembersAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Members.ToListAsync();
         }
 
+        public async Task<Member> GetMemberByIdAsync(int id)
+        {
+            return await _context.Members.FindAsync(id);
+        }
     }
 }
