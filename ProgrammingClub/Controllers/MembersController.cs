@@ -26,13 +26,15 @@ namespace ProgrammingClub.Controllers
                 var members = await _membersService.GetAllMembersAsync();
                 if (members == null || !members.Any())
                 {
-                    return StatusCode((int)HttpStatusCode.OK, ErrorMessageEnum.ErrorMessage.NotFound);
+                    return StatusCode((int)HttpStatusCode.NotFound,
+                        ErrorMessageEnum.GetErrorMessage(ErrorMessageEnum.ErrorMessage.NotFound));
                 }
                 return Ok(members);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Internal server error: " + ex.Message);
+                return StatusCode((int)HttpStatusCode.InternalServerError,
+                    ErrorMessageEnum.GetErrorMessage(ErrorMessageEnum.ErrorMessage.InternalServerError) + ": " + ex.Message);
             }
         }
 
