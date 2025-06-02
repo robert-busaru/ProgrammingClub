@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProgrammingClub.Helpers;
 using ProgrammingClub.Services;
+using System.Net;
 
 
 namespace ProgrammingClub.Controllers
@@ -8,7 +10,6 @@ namespace ProgrammingClub.Controllers
     [ApiController]
     public class MembersController : ControllerBase
     {
-
         private readonly IMembersService _membersService;
 
         public MembersController(IMembersService membersService)
@@ -23,6 +24,10 @@ namespace ProgrammingClub.Controllers
             try
             {
                 var members = await _membersService.GetAllMembersAsync();
+                if (members == null || !members.Any())
+                {
+                    return StatusCode((int)HttpStatusCode.OK, ErrorMessageEnum.ErrorMessage.NotFound);
+                }
                 return Ok(members);
             }
             catch (Exception ex)
