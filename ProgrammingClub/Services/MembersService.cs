@@ -14,13 +14,27 @@ namespace ProgrammingClub.Services
 
         public async Task<IEnumerable<Member>> GetAllMembersAsync()
         {
-            // Ensure the method returns the result of the repository call
             return await _membersRepository.GetAllMembersAsync();
         }
 
-        public Task<Member> GetMemberByIdAsync(int id)
+        public async Task<Member> GetMemberByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _membersRepository.GetMemberByIdAsync(id);
+        }
+
+        public async Task AddMemberAsync(Member member)
+        {
+            await _membersRepository.AddMemberAsync(member);
+        }
+
+        public async Task UpdateMemberAsync(Member member)
+        {
+            await _membersRepository.UpdateMemberAsync(member);
+        }
+
+        public async Task DeleteMemberAsync(Guid id)
+        {
+            await _membersRepository.DeleteMemberAsync(id);
         }
     }
 }

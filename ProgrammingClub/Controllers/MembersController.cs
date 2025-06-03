@@ -2,6 +2,7 @@
 using ProgrammingClub.Helpers;
 using ProgrammingClub.Services;
 using System.Net;
+using System.Threading.Tasks;
 
 
 namespace ProgrammingClub.Controllers
@@ -19,7 +20,7 @@ namespace ProgrammingClub.Controllers
 
         // GET: api/<MembersController>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllMembers()
         {
             try
             {
@@ -40,26 +41,61 @@ namespace ProgrammingClub.Controllers
 
         // GET api/<MembersController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> GetMembersById(Guid id)
         {
-            return "value";
+            try
+            {
+                var member = await _membersService.GetMemberByIdAsync(id);
+                if (member == null)
+                {
+                    return StatusCode((int)HttpStatusCode.NotFound,
+                        ErrorMessageEnum.GetErrorMessage(ErrorMessageEnum.ErrorMessage.NotFound));
+                }
+                return Ok(member);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError,
+                    ErrorMessageEnum.GetErrorMessage(ErrorMessageEnum.ErrorMessage.InternalServerError) + ": " + ex.Message);
+            }
         }
 
         // POST api/<MembersController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Models.Member member)
         {
+            
         }
 
         // PUT api/<MembersController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, [FromBody] Models.Member member)
         {
+            if (member == null)
+            {
+                return BadRequest(ErrorMessageEnum.GetErrorMessage(ErrorMessageEnum.ErrorMessage.BadRequest));
+            }
+
+            try
+            {
+                var updatedMember = _membersService.UpdateMemberAsync(member);
+                if (updatedMember == null)
+                {
+                    return StatusCode((int)HttpStatusCode.NotFound,
+                        ErrorMessageEnum.GetErrorMessage(ErrorMessageEnum.ErrorMessage.NotFound));
+                }
+                return Ok(updatedMember);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError,
+                    ErrorMessageEnum.GetErrorMessage(ErrorMessageEnum.ErrorMessage.InternalServerError) + ": " + ex.Message);
+            }
         }
 
         // DELETE api/<MembersController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
         }
     }
