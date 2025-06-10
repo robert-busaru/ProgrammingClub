@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper.Execution;
+using Microsoft.AspNetCore.Mvc;
+using ProgrammingClub.Helpers;
 using ProgrammingClub.Models;
 using ProgrammingClub.Services;
 using System.Net;
@@ -15,6 +17,25 @@ namespace ProgrammingClub.Controllers
         public AnnouncementsController(IAnnouncementsService announcementsService)
         {
             _announcementsService = announcementsService;
+        }
+
+        // GET: api/Announcements/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            try
+            {
+                var announcement = await _announcementsService.GetAnnouncementByIdAsync(id);
+                if (announcement != null) 
+                {
+                    return StatusCode((int)HttpStatusCode.OK, announcement);
+                }
+                return StatusCode((int)HttpStatusCode.NotFound, ErrorMessagesEnum.AnnouncementNotFound);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
             // GET: api/Announcements
@@ -57,7 +78,7 @@ namespace ProgrammingClub.Controllers
 
         // PUT: api/Announcements/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Announcement announcement)
+        public async Task<IActionResult> Put(Guid id, [FromBody] Announcement announcement)
         {
             try
             {
