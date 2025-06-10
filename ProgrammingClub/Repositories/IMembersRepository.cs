@@ -1,13 +1,24 @@
-﻿namespace ProgrammingClub.Repositories
+﻿using ProgrammingClub.Models;
+
+namespace ProgrammingClub.Repositories
 {
     public interface IMembersRepository
     {
+        Task<IEnumerable<Member>> GetAllMembersAsync();
+        Task<Member> GetMemberByIdAsync(Guid id);
 
-        public Task<Models.Member> GetMemberByIdAsync(Guid id);
-        public Task<IEnumerable<Models.Member>> GetAllMembersAsync();
-        public Task<Models.Member> AddMemberAsync(Models.Member member);
-        public Task<Models.Member> UpdateMemberAsync(Models.Member member);
-        public Task<bool> DeleteMemberAsync(Guid id);
+        //Task<Member> GetMemberByUsernameAsync(string username);
 
+        Task AddMemberAsync(Member member);
+
+        Task<bool> UsernameExistsAsync(string username);
+
+        Task<Member> UpdateMemberAsync(Member member);
+
+        Task<Member> UpdateMemberPartiallyAsync(Member member);
+
+        Task<bool> MemberExistsAsync(Guid id);
+
+        Task<bool> DeleteMemberAsync(Guid id);
     }
 }

@@ -15,11 +15,11 @@ namespace ProgrammingClubApi.UnitTests.Models.Builders
             {
                 IdMember = Guid.NewGuid(),
                 Name = "John",
-                Description = "test member",
-                Username = "test@gmail.com",
                 Title = "Member",
                 Position = "Developer",
-                Resume = "https://example.com/resume.pdf",
+                Description = "test member",
+                Resume = "Resume",
+                Username = "test@gmail.com",
                 Password = "password123"
             };
         }

@@ -1,11 +1,19 @@
-﻿namespace ProgrammingClub.Services
+﻿using ProgrammingClub.Models;
+using ProgrammingClub.Models.CreateOrUpdateDTOs;
+
+namespace ProgrammingClub.Services
 {
     public interface IMembersService
     {
-        Task<Models.Member> GetMemberByIdAsync(Guid id);
-        Task<IEnumerable<Models.Member>> GetAllMembersAsync();
-        Task AddMemberAsync(Models.Member member);
-        Task UpdateMemberAsync(Models.Member member);
-        Task DeleteMemberAsync(Guid id);
+        Task<IEnumerable<Member>> GetAllMembersAsync();
+        Task<Member> GetMemberByIdAsync(Guid id);
+
+        Task AddMemberAsync(Member member);
+
+        Task<Member> UpdateMemberAsync(Guid id, Member member);
+
+        Task<Member> UpdateMemberPartiallyAsync(Guid id, UpdateMembersPartially member);
+
+        Task<bool> DeleteMemberAsync(Guid id);
     }
 }

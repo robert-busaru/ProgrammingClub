@@ -7,37 +7,80 @@ namespace ProgrammingClub.Repositories
     public class MembersRepository : IMembersRepository
     {
         private readonly ProgrammingClubDataContext _context;
-
         public MembersRepository(ProgrammingClubDataContext context)
         {
             _context = context;
         }
-
         public async Task<IEnumerable<Member>> GetAllMembersAsync()
         {
+
             return await _context.Members.ToListAsync();
         }
 
-        public async Task<Member?> GetMemberByIdAsync(Guid id)
+        public async Task<Member> GetMemberByIdAsync(Guid id)
         {
-            return await _context.Members.FindAsync(id);
+            return await _context.Members.FirstOrDefaultAsync(m => m.IdMember == id);
         }
 
-        public async Task<Member> AddMemberAsync(Member member)
+        public async Task AddMemberAsync(Member member)
         {
-            _context.Members.Add(member);
-            await _context.SaveChangesAsync();
-            return member;
+            if (member.IdMember != Guid.Empty)
+            {
+                _context.Entry(member).State = EntityState.Added;
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<bool> UsernameExistsAsync(string username)
+        {
+            return await _context.Members.AnyAsync(m => m.Username == username);
         }
 
         public async Task<Member> UpdateMemberAsync(Member member)
         {
-            _context.Members.Update(member);
+            if (member.IdMember == Guid.Empty)
+            {
+                return null;
+            }
+
+            var exists = await MemberExistsAsync(member.IdMember);
+            if (!exists)
+            {
+                return null;
+            }
+
+            _context.Update(member);
             await _context.SaveChangesAsync();
             return member;
         }
 
-        public async Task<bool> DeleteMemberAsync(Guid id) // Updated to match the interface
+        public async Task<bool> MemberExistsAsync(Guid id)
+        {
+            return await _context.Members.AnyAsync(m => m.IdMember == id);
+        }
+
+        public async Task<Member> UpdateMemberPartiallyAsync(Member member)
+        {
+            Member memberFromDb = await GetMemberByIdAsync(member.IdMember);
+
+            if (memberFromDb == null)
+            {
+                return null;
+            }
+
+            UpdateIfNullOrEmpty(member.Username, value => memberFromDb.Username = value);
+            UpdateIfNullOrEmpty(member.Password, value => memberFromDb.Password = value);
+            UpdateIfNullOrEmpty(member.Name, value => memberFromDb.Name = value);
+            UpdateIfNullOrEmpty(member.Title, value => memberFromDb.Title = value);
+            UpdateIfNullOrEmpty(member.Description, value => memberFromDb.Description = value);
+            UpdateIfNullOrEmpty(member.Resume, value => memberFromDb.Resume = value);
+
+            _context.Update(memberFromDb);
+            await _context.SaveChangesAsync();
+            return memberFromDb;
+        }
+
+        public async Task<bool> DeleteMemberAsync(Guid id)
         {
             if (!await MemberExistsAsync(id))
             {
@@ -49,9 +92,12 @@ namespace ProgrammingClub.Repositories
             return true;
         }
 
-        public async Task<bool> MemberExistsAsync(Guid id)
+        private void UpdateIfNullOrEmpty(string newValue, Action<string> setter)
         {
-            return await _context.Members.AnyAsync(m => m.IdMember == id);
+            if (!string.IsNullOrEmpty(newValue))
+            {
+                setter(newValue);
+            }
         }
     }
 }

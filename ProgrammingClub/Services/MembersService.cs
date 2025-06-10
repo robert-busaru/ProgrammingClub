@@ -1,4 +1,6 @@
-﻿using ProgrammingClub.Models;
+﻿using AutoMapper;
+using ProgrammingClub.Models;
+using ProgrammingClub.Models.CreateOrUpdateDTOs;
 using ProgrammingClub.Repositories;
 
 namespace ProgrammingClub.Services
@@ -6,10 +8,11 @@ namespace ProgrammingClub.Services
     public class MembersService : IMembersService
     {
         private readonly IMembersRepository _membersRepository;
-
-        public MembersService(IMembersRepository membersRepository)
+        private readonly IMapper _mapper;
+        public MembersService(IMembersRepository repository, IMapper mapper)
         {
-            _membersRepository = membersRepository;
+            _membersRepository = repository;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<Member>> GetAllMembersAsync()
@@ -24,17 +27,46 @@ namespace ProgrammingClub.Services
 
         public async Task AddMemberAsync(Member member)
         {
+            if (await _membersRepository.UsernameExistsAsync(member.Username))
+            {
+                throw new ArgumentException("Username already exists.", nameof(member.Username));
+            }
+            member.IdMember = Guid.NewGuid();
             await _membersRepository.AddMemberAsync(member);
         }
 
-        public async Task UpdateMemberAsync(Member member)
+        public async Task<Member> UpdateMemberAsync(Guid id, Member member)
         {
-            await _membersRepository.UpdateMemberAsync(member);
+            if (!await _membersRepository.MemberExistsAsync(id))
+            {
+                return null;
+
+            }
+            member.IdMember = id;
+            return await _membersRepository.UpdateMemberAsync(member);
         }
 
-        public async Task DeleteMemberAsync(Guid id)
+        public async Task<Member> UpdateMemberPartiallyAsync(Guid id, UpdateMembersPartially updateMember)
         {
-            await _membersRepository.DeleteMemberAsync(id);
+            if (!await _membersRepository.MemberExistsAsync(id))
+            {
+                return null;
+            }
+
+            Member member = _mapper.Map<Member>(updateMember);
+
+            member.IdMember = id;
+
+            return await _membersRepository.UpdateMemberPartiallyAsync(member);
+        }
+
+        public async Task<bool> DeleteMemberAsync(Guid id)
+        {
+            if (!await _membersRepository.MemberExistsAsync(id))
+            {
+                return false;
+            }
+            return await _membersRepository.DeleteMemberAsync(id);
         }
     }
 }

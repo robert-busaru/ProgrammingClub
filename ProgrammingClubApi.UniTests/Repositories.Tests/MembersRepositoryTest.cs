@@ -137,7 +137,7 @@ namespace ProgrammingClubAPI.UnitTests.Repositories.Test
             
             // Act
             var updatedMember = await _membersRepository.UpdateMemberAsync(nonExistentMember);
-            
+
             // Assert
             Assert.Null(updatedMember);
         }
