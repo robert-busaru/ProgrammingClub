@@ -38,13 +38,9 @@ namespace ProgrammingClub.Repositories
 
         public async Task<Member> UpdateMemberAsync(Member member)
         {
-            if (member.IdMember == Guid.Empty)
-            {
-                return null;
-            }
-
             var exists = await MemberExistsAsync(member.IdMember);
-            if (!exists)
+
+            if ((member.IdMember == Guid.Empty) || !exists)
             {
                 return null;
             }
