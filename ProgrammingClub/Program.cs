@@ -16,6 +16,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IMembersRepository, MembersRepository>();
 builder.Services.AddTransient<IMembersService, MembersService>();
+builder.Services.AddTransient<IAnnouncementsRepository, AnnouncementsRepository>();
+builder.Services.AddTransient<IAnnouncementsService, AnnouncementsSerivce>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();

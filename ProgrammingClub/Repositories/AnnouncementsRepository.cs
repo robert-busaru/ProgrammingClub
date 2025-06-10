@@ -24,17 +24,17 @@ namespace ProgrammingClub.Repositories
 
         public async Task<IEnumerable<Announcement>> GetAllAnnouncementsAsync()
         {
-            return await _context.Events.ToListAsync();
+            return await _context.Announcements.ToListAsync();
         }
 
         public async Task<Announcement> GetAnnouncementByIdAsync(Guid id)
         {
-            return await _context.Events.FirstOrDefaultAsync(a => a.IdAnnouncement == id);
+            return await _context.Announcements.FirstOrDefaultAsync(a => a.IdAnnouncement == id);
         }
 
         public async Task<bool> AnnouncementExistsAsync(Guid id)
         {
-            return await _context.Events.AnyAsync(a => a.IdAnnouncement == id);
+            return await _context.Announcements.AnyAsync(a => a.IdAnnouncement == id);
         }
 
         public async Task<Announcement> UpdateAnnouncementAsync(Announcement announcement)
@@ -60,7 +60,7 @@ namespace ProgrammingClub.Repositories
                 return false;
             }
             var announcement = await GetAnnouncementByIdAsync(id);
-            _context.Events.Remove(announcement);
+            _context.Announcements.Remove(announcement);
             await _context.SaveChangesAsync();
             return true;
         }
