@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingClub", "Programm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingClubApi.UnitTests", "ProgrammingClubApi.UniTests\ProgrammingClubApi.UnitTests.csproj", "{C588B998-D200-4CA0-8807-04415FA704C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingClubApi.Spec", "ProgrammingClubApi.Spec\ProgrammingClubApi.Spec.csproj", "{CBB34FCD-FAB9-4466-804D-E0CB7168FDAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C588B998-D200-4CA0-8807-04415FA704C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C588B998-D200-4CA0-8807-04415FA704C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C588B998-D200-4CA0-8807-04415FA704C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB34FCD-FAB9-4466-804D-E0CB7168FDAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB34FCD-FAB9-4466-804D-E0CB7168FDAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB34FCD-FAB9-4466-804D-E0CB7168FDAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB34FCD-FAB9-4466-804D-E0CB7168FDAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

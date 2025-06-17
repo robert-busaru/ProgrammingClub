@@ -7,6 +7,7 @@
         public const string MemberNotFound = "Member not found.";
 
         // Announcement-related error messages
+        public const string NoAnnouncementsFound = "No announcements found.";
         public const string AnnouncementNotFound = "Announcement not found.";
 
 
