@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using ProgrammingClub.Helpers;
 using ProgrammingClub.Models;
 using ProgrammingClub.Models.CreateOrUpdateDTOs;
@@ -14,9 +15,11 @@ namespace ProgrammingClubAPI.Controllers
     public class MembersController : ControllerBase
     {
         private readonly IMembersService _membersService;
-        public MembersController(IMembersService membersService)
+        private readonly IMapper _mapper;
+        public MembersController(IMembersService membersService, IMapper mapper)
         {
             _membersService = membersService;
+            _mapper = mapper;
         }
 
         // GET: api/<MembersController>
