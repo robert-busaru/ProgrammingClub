@@ -8,6 +8,6 @@ namespace ProgrammingClub.Models
         public Guid IdMembershipType {  get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int SubscriptionLength { get; set; }
+        public int? SubscriptionLength { get; set; }
     }
 }
