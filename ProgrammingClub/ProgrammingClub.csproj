@@ -7,12 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AuthenticationAPI\**" />
     <Compile Remove="Controllers\NewFolder1\**" />
     <Compile Remove="Controllers\NewFolder2\**" />
+    <Content Remove="AuthenticationAPI\**" />
     <Content Remove="Controllers\NewFolder1\**" />
     <Content Remove="Controllers\NewFolder2\**" />
+    <EmbeddedResource Remove="AuthenticationAPI\**" />
     <EmbeddedResource Remove="Controllers\NewFolder1\**" />
     <EmbeddedResource Remove="Controllers\NewFolder2\**" />
+    <None Remove="AuthenticationAPI\**" />
     <None Remove="Controllers\NewFolder1\**" />
     <None Remove="Controllers\NewFolder2\**" />
   </ItemGroup>
@@ -20,7 +24,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">

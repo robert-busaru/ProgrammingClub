@@ -3,17 +3,17 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace ProgrammingClub.Services
+namespace AuhthenticationAPI.Services
 {
     public class TokenService : ITokenService
     {
-        private readonly IConfiguration _configuration;
-
+        public readonly IConfiguration _configuration;
         public TokenService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
+        //create token based on roles
         public string CreateToken(IdentityUser user, List<string> roles)
         {
             var claims = new List<Claim>

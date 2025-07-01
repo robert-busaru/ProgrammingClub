@@ -6,7 +6,7 @@ using ProgrammingClub.DatabaseDataContext;
 using ProgrammingClub.Models;
 
 
-namespace ProgrammingClubAPI.CQRS.Handlers
+namespace ProgrammingClub.CQRS.Handlers
 {
     //noi in controller vom chema Query-ul, MediatR Cauta handler-ul care implementeaza query-ul, si se apeleaza metoda Handle
     public class GetAllMembershipTypesHandler : IRequestHandler<GetAllMembershipTypesQuery, IEnumerable<MembershipType>>

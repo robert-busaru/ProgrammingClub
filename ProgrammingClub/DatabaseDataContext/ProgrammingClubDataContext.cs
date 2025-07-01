@@ -2,7 +2,7 @@
 
 namespace ProgrammingClub.DatabaseDataContext
 {
-    public class ProgrammingClubDataContext: DbContext
+    public class ProgrammingClubDataContext : DbContext
     {
 
         public ProgrammingClubDataContext(DbContextOptions<ProgrammingClubDataContext> options) : base(options)

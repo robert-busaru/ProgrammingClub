@@ -5,10 +5,9 @@ using ProgrammingClub.Models;
 using ProgrammingClub.Models.CreateOrUpdateDTOs;
 using ProgrammingClub.Services;
 using System.Net;
-using System.Threading.Tasks;
 
 
-namespace ProgrammingClubAPI.Controllers
+namespace ProgrammingClub.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

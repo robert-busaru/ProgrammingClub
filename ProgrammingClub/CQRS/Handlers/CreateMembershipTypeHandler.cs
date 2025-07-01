@@ -8,7 +8,7 @@ namespace ProgrammingClub.CQRS.Handlers
     public class CreateMembershipTypeHandler : IRequestHandler<CreateMembershipTypeCommand, Guid>
     {
         private readonly ProgrammingClubDataContext _context;
-        public CreateMembershipTypeHandler(ProgrammingClubDataContext programmingClubDataContext) 
+        public CreateMembershipTypeHandler(ProgrammingClubDataContext programmingClubDataContext)
         {
             _context = programmingClubDataContext;
         }

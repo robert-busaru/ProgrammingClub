@@ -1,10 +1,10 @@
 ﻿using MediatR;
+using ProgrammingClub.CQRS.Queries;
 using ProgrammingClub.DatabaseDataContext;
 using ProgrammingClub.Models;
-using ProgrammingClubAPI.CQRS.Queries;
 
 
-namespace ProgrammingClubAPI.CQRS.Handlers
+namespace ProgrammingClub.CQRS.Handlers
 {
     public class GetMembershipTypeByIdHandler : IRequestHandler<GetMembershipTypeByIdQuery, MembershipType>
     {

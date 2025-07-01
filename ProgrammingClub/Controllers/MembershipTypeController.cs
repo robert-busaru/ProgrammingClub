@@ -4,8 +4,6 @@ using ProgrammingClub.CQRS.Commands;
 using ProgrammingClub.CQRS.DTOs;
 using ProgrammingClub.CQRS.Queries;
 using ProgrammingClub.Models;
-using ProgrammingClubAPI.CQRS.Commands;
-using ProgrammingClubAPI.CQRS.Queries;
 
 namespace ProgrammingClub.Controllers
 {

@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using AutoMapper.Execution;
 using ProgrammingClub.Models;
 using ProgrammingClub.Repositories;
 
 namespace ProgrammingClub.Services
 {
-    public class AnnouncementsSerivce: IAnnouncementsService
+    public class AnnouncementsSerivce : IAnnouncementsService
     {
         private readonly IAnnouncementsRepository _announcementsRepository;
         private readonly IMapper _mapper;

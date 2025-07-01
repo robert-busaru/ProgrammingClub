@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using ProgrammingClub.Models;
 
-namespace ProgrammingClubAPI.CQRS.Commands
+namespace ProgrammingClub.CQRS.Commands
 {
     public class UpdateMembershipTypeCommand : IRequest<MembershipType>
     {

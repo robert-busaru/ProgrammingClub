@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProgrammingClub.Models.AuthenticationDTOs
+namespace AuhthenticationAPI.Models.AuthenticationDTOs
 {
-    public class LoginRequestDto
+    public class RegisterRequestDto
     {
         [Required]
         [DataType(DataType.EmailAddress)]
@@ -11,8 +11,7 @@ namespace ProgrammingClub.Models.AuthenticationDTOs
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public string Token { get; set; }
+
+        public string[] Roles { get; set; }
     }
-
 }
-

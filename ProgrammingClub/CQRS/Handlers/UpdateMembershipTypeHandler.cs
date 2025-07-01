@@ -1,9 +1,9 @@
 ﻿using MediatR;
+using ProgrammingClub.CQRS.Commands;
 using ProgrammingClub.DatabaseDataContext;
 using ProgrammingClub.Models;
-using ProgrammingClubAPI.CQRS.Commands;
 
-namespace ProgrammingClubAPI.CQRS.Handlers
+namespace ProgrammingClub.CQRS.Handlers
 {
     public class UpdateMembershipTypeHandler : IRequestHandler<UpdateMembershipTypeCommand, MembershipType>
     {

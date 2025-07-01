@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClub.Helpers;
-using ProgrammingClub.Models.CreateOrUpdateDTOs;
 using ProgrammingClub.Services;
 using ProgrammingClub.v1.DTOs;
 using System.Net;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace ProgrammingClub.Services
+namespace AuhthenticationAPI.Services
 {
     public interface ITokenService
     {

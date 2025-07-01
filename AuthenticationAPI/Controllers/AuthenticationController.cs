@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AuhthenticationAPI.Models.AuthenticationDTOs;
+using AuhthenticationAPI.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-
-namespace ProgrammingClub.Controllers
+namespace AuhthenticationAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

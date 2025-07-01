@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using ProgrammingClub.Models;
 
-namespace ProgrammingClubAPI.CQRS.Queries
+namespace ProgrammingClub.CQRS.Queries
 {
     public class GetMembershipTypeByIdQuery : IRequest<MembershipType>
     {

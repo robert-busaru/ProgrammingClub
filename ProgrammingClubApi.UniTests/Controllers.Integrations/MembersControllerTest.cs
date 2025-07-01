@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProgrammingClub.Controllers;
 using ProgrammingClub.DatabaseDataContext;
 using ProgrammingClub.Helpers;
 using ProgrammingClub.Models;
 using ProgrammingClub.Repositories;
 using ProgrammingClub.Services;
 using ProgrammingClubApi.UnitTests.Helpers;
-using ProgrammingClubAPI.Controllers;
 
 namespace ProgrammingClubApi.UnitTests.Controllers.Integrations
 {
@@ -22,10 +22,10 @@ namespace ProgrammingClubApi.UnitTests.Controllers.Integrations
 
         {
 
-           _contextInMemory = DBContextHelper.GetDatabaseContext();
-           repository = new MembersRepository(_contextInMemory);
-           _membersService = new MembersService(repository, null);
-           _membersController = new MembersController(_membersService);
+            _contextInMemory = DBContextHelper.GetDatabaseContext();
+            repository = new MembersRepository(_contextInMemory);
+            _membersService = new MembersService(repository, null);
+            _membersController = new MembersController(_membersService);
 
         }
 

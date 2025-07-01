@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace ProgrammingClub.DatabaseDataContext
+namespace AuhthenticationAPI.DataContext
 {
     public class ProgrammingClubAuthDataContext : IdentityDbContext
     {
@@ -18,22 +18,23 @@ namespace ProgrammingClub.DatabaseDataContext
             var memberId = "b49f9034-8be5-4bff-884b-506d0fa9bb28";
 
             var roles = new List<IdentityRole>
+            {
+                new IdentityRole
                 {
-                    new IdentityRole
-                    {
-                        Id = adminId,
-                        Name = "Admin",
-                        NormalizedName = "ADMIN"
-                    },
-                    new IdentityRole
-                    {
-                        Id = memberId,
-                        Name = "Member",
-                        NormalizedName = "MEMBER"
-                    }
-                };
+                    Id = adminId,
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                },
+                new IdentityRole
+                {
+                    Id = memberId,
+                    Name = "Member",
+                    NormalizedName = "MEMBER"
+                }
+            };
 
             builder.Entity<IdentityRole>().HasData(roles);
         }
     }
 }
+

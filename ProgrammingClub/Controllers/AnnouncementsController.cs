@@ -1,10 +1,8 @@
-﻿using AutoMapper.Execution;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProgrammingClub.Helpers;
 using ProgrammingClub.Models;
 using ProgrammingClub.Services;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace ProgrammingClub.Controllers
 {
@@ -26,7 +24,7 @@ namespace ProgrammingClub.Controllers
             try
             {
                 var announcement = await _announcementsService.GetAnnouncementByIdAsync(id);
-                if (announcement != null) 
+                if (announcement != null)
                 {
                     return StatusCode((int)HttpStatusCode.OK, announcement);
                 }
@@ -38,7 +36,7 @@ namespace ProgrammingClub.Controllers
             }
         }
 
-            // GET: api/Announcements
+        // GET: api/Announcements
         [HttpGet]
         public async Task<IActionResult> Get()
         {

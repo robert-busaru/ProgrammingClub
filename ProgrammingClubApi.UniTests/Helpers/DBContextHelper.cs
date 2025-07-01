@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using ProgrammingClub.DatabaseDataContext;
 using ProgrammingClub.Models;
 using ProgrammingClubApi.UnitTests.Models.Builders;

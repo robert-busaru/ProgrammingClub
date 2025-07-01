@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ProgrammingClub.v1.DTOs;
 
 namespace ProgrammingClub.Mapping
 {
